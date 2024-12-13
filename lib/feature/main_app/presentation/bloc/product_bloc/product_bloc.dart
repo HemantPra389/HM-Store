@@ -12,8 +12,10 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   ProductBloc() : super(ProductInitial()) {
     on<FetchProductsList>((event, emit) async {
       emit(ProductsListLoadingState());
-      final res =
-          await locator.call<ProductUsecase>().fetchProductSectionUsecase();
+      final res = await locator
+          .call<ProductUsecase>()
+          .fetchProductSectionUsecase(
+              tagCodes: event.tagCodes, page: event.page);
       res.fold((l) => emit(ProductsListErrorState(errorMessage: l.message)),
           (r) => emit(ProductsListSuccessState(productSectionEntity: r)));
     });

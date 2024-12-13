@@ -6,5 +6,5 @@ import '../entities/product_section_entity.dart';
 
 abstract class AppRepository {
   Future<Either<CustomError,List<CategoryEntity>>> fetchCategory();
-  Future<Either<CustomError,ProductSectionEntity>> fetchProductSection();
+  Future<Either<CustomError,ProductSectionEntity>> fetchProductSection({required String tagCodes,required int page});
 }

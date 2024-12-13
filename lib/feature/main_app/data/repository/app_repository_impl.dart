@@ -14,7 +14,7 @@ class AppRepositoryImpl implements AppRepository {
   }
 
   @override
-  Future<Either<CustomError, ProductSectionEntity>> fetchProductSection() {
-    return externalDb.fetchProductSection();
+  Future<Either<CustomError, ProductSectionEntity>> fetchProductSection({required String tagCodes,required int page}) {
+    return externalDb.fetchProductSection(tagCodes:tagCodes,page:page);
   }
 }

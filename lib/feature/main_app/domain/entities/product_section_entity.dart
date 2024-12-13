@@ -32,18 +32,10 @@ class Result {
   List<GalleryImage> images;
 
   List<Article> articles;
-  bool visible;
-  List<String> concept;
 
   Article defaultArticle;
 
-  String categoryName;
-
   String brandName;
-  List<GalleryImage> galleryImages;
-
-  List<String> allArticleImages;
-  List<String> allArticleBaseImages;
 
   Result({
     required this.code,
@@ -51,14 +43,8 @@ class Result {
     required this.price,
     required this.images,
     required this.articles,
-    required this.visible,
-    required this.concept,
     required this.defaultArticle,
-    required this.categoryName,
     required this.brandName,
-    required this.galleryImages,
-    required this.allArticleImages,
-    required this.allArticleBaseImages,
   });
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
@@ -69,17 +55,8 @@ class Result {
             json["images"].map((x) => GalleryImage.fromJson(x))),
         articles: List<Article>.from(
             json["articles"].map((x) => Article.fromJson(x))),
-        visible: json["visible"],
-        concept: List<String>.from(json["concept"].map((x) => x)),
         defaultArticle: Article.fromJson(json["defaultArticle"]),
-        categoryName: json["categoryName"],
         brandName: json["brandName"],
-        galleryImages: List<GalleryImage>.from(
-            json["galleryImages"].map((x) => GalleryImage.fromJson(x))),
-        allArticleImages:
-            List<String>.from(json["allArticleImages"].map((x) => x)),
-        allArticleBaseImages:
-            List<String>.from(json["allArticleBaseImages"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
@@ -88,16 +65,8 @@ class Result {
         "price": price.toJson(),
         "images": List<dynamic>.from(images.map((x) => x.toJson())),
         "articles": List<dynamic>.from(articles.map((x) => x.toJson())),
-        "visible": visible,
-        "concept": List<dynamic>.from(concept.map((x) => x)),
         "defaultArticle": defaultArticle.toJson(),
-        "categoryName": categoryName,
         "brandName": brandName,
-        "galleryImages":
-            List<dynamic>.from(galleryImages.map((x) => x.toJson())),
-        "allArticleImages": List<dynamic>.from(allArticleImages.map((x) => x)),
-        "allArticleBaseImages":
-            List<dynamic>.from(allArticleBaseImages.map((x) => x)),
       };
 }
 

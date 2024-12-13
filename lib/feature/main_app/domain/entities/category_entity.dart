@@ -42,4 +42,5 @@ class CategoryEntity {
             : List<dynamic>.from(categoriesArray!.map((x) => x.toJson())),
         "tagCodes": List<dynamic>.from(tagCodes.map((x) => x)),
       };
+
 }

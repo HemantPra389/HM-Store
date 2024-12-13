@@ -7,7 +7,9 @@ import 'package:hm_store/feature/main_app/presentation/bloc/product_bloc/product
 import 'package:hm_store/feature/main_app/presentation/screens/cart/cart_screen.dart';
 import 'package:hm_store/feature/main_app/presentation/screens/category/category_screen.dart';
 import 'package:hm_store/feature/main_app/presentation/screens/favourite/favourite_screen.dart';
-import 'package:hm_store/feature/main_app/presentation/screens/home/home_screen.dart';
+import 'package:hm_store/feature/main_app/presentation/screens/category/productlist_screen.dart';
+
+import 'home/home_screen.dart';
 
 class MainHomeScreen extends StatefulWidget {
   const MainHomeScreen({Key? key}) : super(key: key);
@@ -17,7 +19,7 @@ class MainHomeScreen extends StatefulWidget {
 }
 
 class _MainHomeScreenState extends State<MainHomeScreen> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
   final icons = [
     TIconString.home,
     TIconString.category,
@@ -26,13 +28,9 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
     TIconString.cart,
   ];
   final List<Widget> bottomBarItems = [
+    HomeScreen(),
     BlocProvider(
-        create: (context) => ProductBloc()..add(FetchProductsList()),
-        child: HomeScreen()),
-    BlocProvider(
-        create: (context) => CategoryBloc()..add(FetchCategoryEvent()),
-        // create: (context) => CategoryBloc(),
-        child: CategoryScreen()),
+        create: (context) => CategoryBloc()..add(FetchCategoryEvent()),child: CategoryScreen(),),
     SizedBox(),
     FavouriteScreen(),
     CartScreen()
